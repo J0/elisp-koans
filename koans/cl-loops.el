@@ -25,7 +25,7 @@
         (loop-result
          (cl-loop for letter in letters
                   collect letter)))
-   (should (equal ___ loop-result))))
+   (should (equal (:a :b :c :d) loop-result))))
 
 
 (elisp-koans/deftest
