@@ -34,11 +34,11 @@
   (let ((player-1 (make-basketball-player
                    :name "larry" :team :celtics :number 33)))
     (should (equal "larry" (basketball-player-name player-1)))
-    (should (equal ___ (basketball-player-team player-1)))
-    (should (equal ___ (basketball-player-number player-1)))
+    (should (equal :celtics (basketball-player-team player-1)))
+    (should (equal 33 (basketball-player-number player-1)))
     (should (equal 'basketball-player (type-of player-1)))
     (setf (basketball-player-team player-1) :RETIRED)
-    (should (equal ___ (basketball-player-team player-1)))))
+    (should (equal :RETIRED (basketball-player-team player-1)))))
 
 
 (cl-defstruct baseball-player name (position :outfield) (team :red-sox))
@@ -47,9 +47,9 @@
  elisp-koans/cl-structures-struct-defaults ()
  "Struct fields can have default values and fields without explicit defaults default to nil."
  (let ((player-2 (make-baseball-player)))
-   (should (equal ___ (baseball-player-position player-2)))
-   (should (equal ___ (baseball-player-team player-2)))
-   (should (equal ___ (baseball-player-name player-2)))))
+   (should (equal :outfield (baseball-player-position player-2)))
+   (should (equal :red-sox (baseball-player-team player-2)))
+   (should (equal nil (baseball-player-name player-2)))))
 
 
 (defstruct (american-football-player (:conc-name nfl-guy-)) name position team)
@@ -60,7 +60,7 @@
 a nickname to make code readable with the :conc-name option."
  (let ((player-3 (make-american-football-player
                   :name "Drew Brees" :position :QB :team "Saints")))
-   (should (equal ___ (nfl-guy-position player-3)))))
+   (should (equal :QB (nfl-guy-position player-3)))))
 
 
 (cl-defstruct (nba-contract (:include basketball-player)) salary start-year end-year)
@@ -76,13 +76,13 @@ This form of inheritance allows composition of objects."
                        :name "Kobe Bryant"
                        :team :LAKERS
                        :number 24)))
-      (should (equal ___ (nba-contract-start-year contract-1)))
-      (should (equal ___ (type-of contract-1)))
+      (should (equal 2004 (nba-contract-start-year contract-1)))
+      (should (equal nba-contract (type-of contract-1)))
       ;; do inherited structures follow the rules of type hierarchy?
-      (should (eq ___ (typep contract-1 'basketball-player)))
+      (should (eq nil (typep contract-1 'basketball-player)))
       ;; can you access structure fields with the inherited accessors?
-      (should (equal ___ (nba-contract-team contract-1)))
-      (should (equal ___ (basketball-player-team contract-1)))))
+      (should (equal :LAKERS (nba-contract-team contract-1)))
+      (should (equal nil (basketball-player-team contract-1)))))
 
 
 (elisp-koans/deftest

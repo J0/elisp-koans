@@ -43,6 +43,5 @@
  elisp-koans/asserts-should-error ()
  "try filling out the type of error, in this case an `\'arith-error'"
  (should-error (/ 1 0) :type 'arith-error))
-`
 
 ;;; asserts.el ends here

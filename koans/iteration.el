@@ -113,7 +113,7 @@ with the function applied to each element of the input"
  (should (equal (vowels-to-xs "Astronomy") "xstrxnxmy"))
  (let* ((subjects '("Astronomy" "Biology" "Chemistry" "Linguistics"))
         (mc-result (mapcar #'vowels-to-xs subjects)))
-   (should (equal ___ mc-result))))
+   (should (equal '("xstrxnxmy" "Bxxlxgy" "Chxmxstry" "Lxngxxstxcs") mc-result))))
 
 ;; ----
 
@@ -122,6 +122,6 @@ with the function applied to each element of the input"
  elisp-koans/iteration-mapcar-with-lambda ()
  "`mapcar' can apply a `lambda' to a collection"
  (let ((mc-result (mapcar (lambda (x) (mod x 10)) '(21 152 403 14))))
-   (should (equal ___ mc-result))))
+   (should (equal '(1 2 3 4) mc-result))))
 
 ;; iteration.el ends here

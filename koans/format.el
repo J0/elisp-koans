@@ -29,17 +29,17 @@
 (elisp-koans/deftest
  elisp-koans/format-with-plain-text ()
  "If there is no format specifier, FORMAT just returns the string itself."
- (should (equal ___ (format "this is plain text."))))
+ (should (equal "this is plain text." (format "this is plain text."))))
 
 
 (elisp-koans/deftest
  elisp-koans/format-with-general-specifier ()
  "%s is a general specifier that translates to the print form of a
 parameter."
- (should (equal ___ (format "%s" 42)))
- (should (equal ___ (format "%s" ?C)))
+ (should (equal 42 (format "%s" 42)))
+ (should (equal 'C' (format "%s" ?C)))
  (should (equal ___ (format "%s %s" "multiple" 'arguments)))
- (should (equal ___ (format "%s" "galaxy far far away")))
+ (should (equal "galaxy far far away" (format "%s" "galaxy far far away")))
  ;; %s can also translate to list
  ;; and parameters to FORMAT are passed by value
  (should (equal ___ (format "%s evaluates to %s"

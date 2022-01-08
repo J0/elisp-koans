@@ -25,7 +25,7 @@
 (elisp-koans/deftest
  elisp-koans/functions-call ()
  "`defun' defines global functions"
- (should (eq ___ (elisp-koans/add 7 11))))
+ (should (eq 18 (elisp-koans/add 7 11))))
 
 
 (elisp-koans/deftest
@@ -36,8 +36,8 @@ with `cl-labels' may refer to themselves, whereas local functions
 defined with `cl-flet' may not."
  (cl-flet ((elisp-koans/add (a b) (* a b)))
    "`cl-flet' binds a function to a name within a lexical environment"
-   (should (equal ___ (elisp-koans/add 7 11))))
- (should (equal ___ (elisp-koans/add 7 11))))
+   (should (equal 77 (elisp-koans/add 7 11))))
+ (should (equal 18 (elisp-koans/add 7 11))))
 
 
 ;; borrowed from Common Lisp The Language chapter 5.2.2
@@ -90,7 +90,7 @@ arguments (possibly none) are collected into a list."
  ;; it is not necessary to specify all key parameters
  (should (equal ___ (elisp-koans/cl-defun-with-key-params :b 22)))
  ;; order is not important
- (should (equal ___ (elisp-koans/cl-defun-with-key-params :b 22 :a 0))))
+ (should (equal ______  (elisp-koans/cl-defun-with-key-params :b 22 :a 0))))
 
 
 (cl-defun elisp-koans/cl-defun-key-params-can-have-defaults (&key (a 3) (b 4))

@@ -25,7 +25,7 @@
         (loop-result
          (cl-loop for letter in letters
                   collect letter)))
-   (should (equal (:a :b :c :d) loop-result))))
+   (should (equal '(:a :b :c :d) loop-result))))
 
 
 (elisp-koans/deftest
@@ -67,8 +67,8 @@
          (cl-loop for letter in letters collect letter))
         (loop-result-on
          (cl-loop for letter on letters collect letter)))
-   (should (equal ___ loop-result-in))
-   (should (equal ___ loop-result-on))))
+   (should (equal '(:a :b :c) loop-result-in))
+   (should (equal '((:a :b :c) (:b :c) (:c)) loop-result-on))))
 
 
 (elisp-koans/deftest
@@ -152,7 +152,7 @@
  (let ((loop-return
         (cl-loop for x in '(1 1 2 3 5 8 13)
                  when (evenp x) sum x)))
-   (should (equal ___ loop-return))))
+   (should (equal 10 loop-return))))
 
 
 (defun greater-than-10-p (x)
@@ -164,7 +164,7 @@
  (let ((loop-return
         (cl-loop for x in '(1 1 2 3 5 8 13)
                  when (greater-than-10-p x) sum x)))
-   (should (equal ___ loop-return))))
+   (should (equal 13 loop-return))))
 
 
 (elisp-koans/deftest
