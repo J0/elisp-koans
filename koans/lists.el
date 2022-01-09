@@ -90,13 +90,13 @@ element of a list."
 `elt' is similar to `nth', with the arguments reversed."
  (let ((noms '("peanut" "butter" "and" "jelly")))
    (should (equal "peanut" (first noms)))
-   (should (equal ___ (second noms)))
-   (should (equal ___ (fourth noms)))
-   (should (equal ___ (last noms)))
+   (should (equal "butter" (second noms)))
+   (should (equal "jelly" (fourth noms)))
+   (should (equal '("jelly") (last noms)))
    (should (equal "butter" (nth 1 noms))) ; k 1
-   (should (equal ___ (nth 0 noms)))
-   (should (equal ___ (nth 2 noms)))
-   (should (equal ___ (elt noms 2)))))
+   (should (equal "peanut" (nth 0 noms)))
+   (should (equal "and" (nth 2 noms)))
+   (should (equal "and" (elt noms 2)))))
 
 
 (elisp-koans/deftest
@@ -105,8 +105,8 @@ element of a list."
  (let ((noms '("peanut" "butter" "and" "jelly")))
    (should (equal '("peanut" ) (subseq noms 0 1)))
    (should (equal '("peanut" "butter") (subseq noms 0 2)))
-   (should (equal '("jelly") (subseq noms 2 2)))
-   (should (equal '("jelly") (subseq noms 2)))))
+   (should (equal nil (subseq noms 2 2)))
+   (should (equal '("and" "jelly") (subseq noms 2)))))
 
 
 (elisp-koans/deftest

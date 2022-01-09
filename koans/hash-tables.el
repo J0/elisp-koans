@@ -23,10 +23,10 @@
  "make a new hash table with `make-hash-table'"
  (let ((my-hash-table))
    (setf my-hash-table (make-hash-table))
-   (should (eq ___ (typep my-hash-table 'hash-table)))
-   (should (eq ___  (hash-table-p my-hash-table)))
-   (should (eq ___  (hash-table-p '(3 3 3))))
-   (should (eq ___ (hash-table-count my-hash-table)))))
+   (should (eq t (typep my-hash-table 'hash-table)))
+   (should (eq t  (hash-table-p my-hash-table)))
+   (should (eq nil  (hash-table-p '(3 3 3))))
+   (should (eq 0 (hash-table-count my-hash-table)))))
 
 
 (elisp-koans/deftest
@@ -40,11 +40,11 @@
 
    (setf (gethash 8 table-of-cube-roots) 2)
    (setf (gethash -3 table-of-cube-roots) -27)
-   (should (equal ___ (gethash -3 table-of-cube-roots)))
-   (should (equal ___ (hash-table-count table-of-cube-roots)))
+   (should (equal -27 (gethash -3 table-of-cube-roots)))
+   (should (equal 3 (hash-table-count table-of-cube-roots)))
 
    "accessing unset keys returns nil"
-   (should (equal ___ (gethash 125 table-of-cube-roots)))))
+   (should (equal nil (gethash 125 table-of-cube-roots)))))
 
 
 (elisp-koans/deftest
@@ -71,9 +71,9 @@ The programmer must be careful to know which equality predicate is right."
    (setf (gethash "one" hash-table-default) "uno")
 
    "count how many unique key-value pairs in each"
-   (should (eq ___ (hash-table-count hash-table-eq)))
-   (should (eq ___ (hash-table-count hash-table-equal)))
-   (should (eq ___ (hash-table-count hash-table-default)))))
+   (should (eq 2 (hash-table-count hash-table-eq)))
+   (should (eq 1 (hash-table-count hash-table-equal)))
+   (should (eq 2 (hash-table-count hash-table-default)))))
 
 
 (elisp-koans/deftest
@@ -85,9 +85,9 @@ The programmer must be careful to know which equality predicate is right."
    (setf (gethash "one" h2) "yat")
    (setf (gethash "two" h1) "yi")
    (setf (gethash "two" h2) "yi")
-   (should (eq ___ (eq h1 h2)))
-   (should (eq ___ (equal h1 h2)))
-   (should (eq ___ (equalp h1 h2)))))
+   (should (eq nil (eq h1 h2)))
+   (should (eq t (equal h1 h2)))
+   (should (eq nil (equalp h1 h2)))))
 
 
 (elisp-koans/deftest
@@ -101,7 +101,7 @@ The programmer must be careful to know which equality predicate is right."
    (setf (gethash "two" expected) "zwei")
 
    (setf (gethash "one" babel-fish) "eins")
-   (setf (gethash "two" babel-fish) ____)))
+   (setf (gethash "two" babel-fish) "zwei")))
 
 
 (elisp-koans/deftest

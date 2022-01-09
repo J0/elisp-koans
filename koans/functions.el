@@ -48,9 +48,9 @@ defined with `cl-flet' may not."
 (elisp-koans/deftest
  elisp-koans/functions-optional-parameters ()
  "Optional parameters are filled in with their default value."
- (should (equal ___ (elisp-koans/func-with-opt-params :test-1 :test-2)))
- (should (equal ___ (elisp-koans/func-with-opt-params :test-1)))
- (should (equal ___ (elisp-koans/func-with-opt-params))))
+ (should (equal '(:test-1 :test-2) (elisp-koans/func-with-opt-params :test-1 :test-2)))
+ (should (equal '(:test-1 3) (elisp-koans/func-with-opt-params :test-1)))
+ (should (equal '(2 3) (elisp-koans/func-with-opt-params))))
 
 
 (cl-defun elisp-koans/func-with-opt-params-and-indication (&optional (a 2 a?) (b 3 b?))

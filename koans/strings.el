@@ -21,10 +21,10 @@
  elisp-koans/strings-double-quoted-strings ()
  "double quoted strings are strings"
  (let ((my-string "do or do not"))
-   (should (eq ___ (typep my-string 'string)))
+   (should (eq t (typep my-string 'string)))
    "use `stringp' to check whether a value is a string"
-   (should (eq ___ (stringp my-string)))
-   (should (eq ___ (stringp '(a list))))
+   (should (eq t (stringp my-string)))
+   (should (eq nil (stringp '(a list))))
    "strings are the same thing as vectors of characters"
    (should (eq (aref "meat" 2) (aref "fiesta" 5)))))
 
@@ -35,13 +35,13 @@
  (let ((my-string "this is
                       a multi
                       line string"))
-   (should (eq ___ (stringp my-string)))))
+   (should (eq t (stringp my-string)))))
 
 
 (elisp-koans/deftest
  elisp-koans/strings-creating ()
  "use `make-string' to create a string of repeated characters"
- (should (equal ___ (make-string 5 ?x)))
+ (should (equal ?x?x?x?x?x (make-string 5 ?x)))
  (should (equal ___ (make-string 0 ?y)))
  "use `string' to create a string out of individual characters"
  (should (equal ___ (string ?e ?l ?i ?s ?p ?!))))
@@ -51,7 +51,7 @@
  elisp-koans/strings-escape-quotes ()
  "use backslashes to escape double quotes"
  (let ((my-string "this string has one of these \" in it"))
-   (should (eq ___ (stringp my-string)))))
+   (should (eq t (stringp my-string)))))
 
 
 (elisp-koans/deftest
@@ -59,17 +59,17 @@
  "use `substring' to get part of a string"
  (let ((groucho "Groucho Marx"))
    (should (equal "Marx" (substring groucho 8)))
-   (should (equal ___ (substring groucho 0 6)))
-   (should (equal ___ (substring groucho -4 -1)))
+   (should (equal "Grouch" (substring groucho 0 6)))
+   (should (equal "Mar" (substring groucho -4 -1)))
    "since strings are sequences, you may use `subseq', aliased from `cl-subseq'"
-   (should (equal ___ (subseq groucho 0 7)))
-   (should (equal ___ (cl-subseq groucho 1 5)))))
+   (should (equal "Groucho" (subseq groucho 0 7)))
+   (should (equal "rouc" (cl-subseq groucho 1 5)))))
 
 
 (elisp-koans/deftest
  elisp-koans/strings-accessing-individual-characters ()
  "char literals are the character preceded by a questionmark"
- (should (eq ___ (typep ?a 'character)))
+ (should (eq t (typep ?a 'character)))
  (should (eq ___ (typep "A" 'character)))
  (should (eq ___ (typep ?a 'string))))
 
